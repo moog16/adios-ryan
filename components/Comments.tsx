@@ -38,8 +38,8 @@ export default function Comments() {
   const currentDate = new Date()
   return (
     <Box mt={8}>
-      <Text my={4} textStyle="headline3">
-        Previous dates' comments
+      <Text my={4} textStyle="bodySmallSemibold" color="gray.600">
+        Comments from previous dates'
       </Text>
       <List>
         {commentsData.map((comment, index) => {
@@ -62,7 +62,7 @@ export default function Comments() {
                 <Box ml={2}>
                   <Flex>
                     <Text textStyle="bodySmallSemibold">{Name}</Text>{' '}
-                    <Text textStyle="bodySmall" color="gray.400" ml={2}>
+                    <Text textStyle="bodySmall" color="gray.500" ml={2}>
                       {formatRelative(new Date(Timestamp), currentDate)}
                     </Text>
                   </Flex>

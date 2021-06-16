@@ -50,7 +50,7 @@ export default function Home() {
         </Text>
       </Flex>
 
-      <Box maxW="container.md" p={[4, null, 8]} m="auto">
+      <Box maxW="container.sm" p={[4, null, 8]} m="auto">
         <Flex direction="column" align="center">
           <Box>
             <Image width={'350px'} height={'350px'} src="/profile.jpg" />
