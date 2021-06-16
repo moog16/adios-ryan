@@ -18,7 +18,6 @@ import {
   SkeletonCircle,
 } from '@chakra-ui/react'
 import commentsData from '../public/comments.json'
-console.log(commentsData)
 
 const getRandomColor = () => {
   const colorPalette = [
