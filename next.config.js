@@ -14,7 +14,7 @@ module.exports = (phase, { defaultConfig }) => {
     basePath,
     distDir,
     images: {
-      domains: ['storage.googleapis.com'],
+      domains: ['storage.googleapis.com', 'drive.google.com'],
     },
     webpack: (config, options) => {
       // In `pages/_app.js`, Sentry is imported from @sentry/browser. While

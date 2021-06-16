@@ -13,6 +13,9 @@ import {
   Tbody,
   Td,
 } from '@chakra-ui/react'
+import Comments from '../components/Comments'
+import commentsData from '../public/comments.json'
+console.log(commentsData)
 
 const ChakraImage = chakra(Image, {
   shouldForwardProp: (prop) => {
@@ -110,6 +113,7 @@ export default function Home() {
             })}
           </Tbody>
         </Table>
+        <Comments />
       </Box>
     </Box>
   )

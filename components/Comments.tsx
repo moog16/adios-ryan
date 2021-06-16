@@ -1,0 +1,67 @@
+import Image from 'next/image'
+import { formatRelative } from 'date-fns'
+import {
+  Flex,
+  chakra,
+  Box,
+  Text,
+  Divider,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Tbody,
+  Td,
+  ListItem,
+  List,
+  Link,
+  SkeletonCircle,
+} from '@chakra-ui/react'
+import commentsData from '../public/comments.json'
+console.log(commentsData)
+
+const getRandomColor = () => {
+  const colorPalette = ['brand.500','brand.900', 'brandSecondary.100', 'brandSecondary.100', 'brandSecondary.100', 'brandSecondary.100', 'logo.primaryColorDark', 'logo.secondaryColorDark']
+  const randomIndex = Math.floor(Math.random()*colorPalette.length)
+  return colorPalette[randomIndex] 
+}
+
+export default function Comments() {
+  const currentDate = new Date()
+  return (
+    <Box mt={8}>
+      <Text my={4} textStyle="headline3">
+        Comments
+      </Text>
+      <List>
+        {commentsData.map((comment) => {
+          const { Comment, Name, Timestamp } = comment
+          const profilePhoto = comment['Profile picture']
+          console.log(profilePhoto)
+          const randomColor = getRandomColor()
+          return (
+            <ListItem mb={4}>
+              <Flex>
+                {false ? <Image src={profilePhoto} width={8} height={8} /> : <SkeletonCircle size={8} startColor={randomColor} endColor={randomColor} minW={8}/>}
+                <Box ml={2}>
+                  <Flex>
+                    <Text textStyle="bodySmallSemibold">{Name}</Text>{' '}
+                    <Text textStyle="bodySmall" color="gray.400" ml={2}>
+                      {formatRelative(new Date(Timestamp), currentDate)}
+                    </Text>
+                  </Flex>
+                  <Text my={2}>{Comment}</Text>
+                  <Flex color="gray.400" fontSize="bodySmall">
+                    <Link mr={2}>Share</Link>
+                    <Link mr={2}>Report</Link>
+                    <Link mr={2}>Save</Link>
+                  </Flex>
+                </Box>
+              </Flex>
+            </ListItem>
+          )
+        })}
+      </List>
+    </Box>
+  )
+}
