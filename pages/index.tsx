@@ -12,10 +12,11 @@ import {
   Th,
   Tbody,
   Td,
+  IconButton,
 } from '@chakra-ui/react'
 import Comments from '../components/Comments'
-import commentsData from '../public/comments.json'
-console.log(commentsData)
+import Tinder from '../components/Tinder'
+import ClapButton from 'react-clap-button'
 
 const ChakraImage = chakra(Image, {
   shouldForwardProp: (prop) => {
@@ -35,6 +36,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex bgColor="brand.500" p={2} align="center">
+        <Tinder />
         <Flex maxW={8} align="center">
           <ChakraImage
             src="https://storage.googleapis.com/tc-assets/tc-app-icon.svg"
@@ -43,23 +45,67 @@ export default function Home() {
             height="596px"
           />
         </Flex>
+        <Text color="white" textStyle="headline3" ml={2}>
+          Ryan's Tinder Profile
+        </Text>
       </Flex>
 
       <Box maxW="container.md" p={[4, null, 8]} m="auto">
-        <Box m="auto">
-          <Image width={'350px'} height={'350px'} src="/profile.jpg" />
-          <Flex align="flex-end">
-            <Text textStyle="headline2">Ryan Irilli ,</Text>
-            <Text textStyle="headline3" fontWeight="normal" color="gray.500">
-              21
-            </Text>
-          </Flex>
-        </Box>
-        <Divider my={8} />
+        <Flex direction="column" align="center">
+          <Box>
+            <Image width={'350px'} height={'350px'} src="/profile.jpg" />
+            <Flex align="center">
+              <Text textStyle="headline2" mr={2}>
+                Ryan Irilli 💖,
+              </Text>
+              <Text textStyle="headline3" fontWeight="normal" color="gray.500">
+                21
+              </Text>
+            </Flex>{' '}
+            <Flex justify="space-between" w={80} my={6}>
+              <ClapButton
+                count={0}
+                countTotal={0}
+                maxCount={50}
+                isClicked={false}
+                iconComponent={(props) => (
+                  <IconButton
+                    icon={<Tinder />}
+                    ariaLabel="hot"
+                    borderRadius="full"
+                    size="lg"
+                    w={16}
+                    h={16}
+                    bgColor="red.100"
+                  />
+                )}
+              />
+              <ClapButton
+                count={0}
+                countTotal={0}
+                maxCount={50}
+                isClicked={false}
+                iconComponent={(props) => (
+                  <IconButton
+                    icon={<Tinder w={8} h={8} />}
+                    ariaLabel="extremely hot"
+                    borderRadius="full"
+                    size="lg"
+                    w={16}
+                    h={16}
+                    bgColor="red.100"
+                  />
+                )}
+              />
+            </Flex>
+          </Box>
+        </Flex>
+
+        <Divider my={10} />
         <Box>
           <Text color="gray.700">
             {
-              'Fun loveable outgoing dude, wanting to connect <3.  I hate flowers, but love doggies.'
+              'Fun loveable outgoing dude, wanting to connect ✉️ . I hate flowers, but love doggies 🐶. 🐩 🌭 . I will meet your parents, but only after the 40th date. DM ME!'
             }
           </Text>
         </Box>

@@ -31,7 +31,7 @@ export default function Comments() {
   return (
     <Box mt={8}>
       <Text my={4} textStyle="headline3">
-        Comments
+        Previous dates' comments
       </Text>
       <List>
         {commentsData.map((comment) => {
