@@ -68,10 +68,10 @@ export default function Home() {
                 countTotal={0}
                 maxCount={50}
                 isClicked={false}
-                iconComponent={(props) => (
+                iconComponent={() => (
                   <IconButton
                     icon={<Tinder />}
-                    ariaLabel="hot"
+                    aria-label="hot"
                     borderRadius="full"
                     size="lg"
                     w={16}
@@ -85,10 +85,10 @@ export default function Home() {
                 countTotal={0}
                 maxCount={50}
                 isClicked={false}
-                iconComponent={(props) => (
+                iconComponent={() => (
                   <IconButton
                     icon={<Tinder w={8} h={8} />}
-                    ariaLabel="extremely hot"
+                    aria-label="extremely hot"
                     borderRadius="full"
                     size="lg"
                     w={16}
@@ -147,9 +147,9 @@ export default function Home() {
               },
               { repo: 'go-api', commits: '2', added: '93', removed: '37' },
               { repo: 'terraform', commits: '4', added: '950', removed: '446' },
-            ].map(({ repo, commits, added, removed }) => {
+            ].map(({ repo, commits, added, removed }, index) => {
               return (
-                <Tr>
+                <Tr key={index}>
                   <Td>{repo}</Td>
                   <Td>{commits}</Td>
                   <Td color="green.500">{added} ++</Td>

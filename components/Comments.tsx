@@ -21,9 +21,18 @@ import commentsData from '../public/comments.json'
 console.log(commentsData)
 
 const getRandomColor = () => {
-  const colorPalette = ['brand.500','brand.900', 'brandSecondary.100', 'brandSecondary.100', 'brandSecondary.100', 'brandSecondary.100', 'logo.primaryColorDark', 'logo.secondaryColorDark']
-  const randomIndex = Math.floor(Math.random()*colorPalette.length)
-  return colorPalette[randomIndex] 
+  const colorPalette = [
+    'brand.500',
+    'brand.900',
+    'brandSecondary.100',
+    'brandSecondary.100',
+    'brandSecondary.100',
+    'brandSecondary.100',
+    'logo.primaryColorDark',
+    'logo.secondaryColorDark',
+  ]
+  const randomIndex = Math.floor(Math.random() * colorPalette.length)
+  return colorPalette[randomIndex]
 }
 
 export default function Comments() {
@@ -34,15 +43,23 @@ export default function Comments() {
         Previous dates' comments
       </Text>
       <List>
-        {commentsData.map((comment) => {
+        {commentsData.map((comment, index) => {
           const { Comment, Name, Timestamp } = comment
           const profilePhoto = comment['Profile picture']
-          console.log(profilePhoto)
           const randomColor = getRandomColor()
           return (
-            <ListItem mb={4}>
+            <ListItem mb={4} key={index}>
               <Flex>
-                {false ? <Image src={profilePhoto} width={8} height={8} /> : <SkeletonCircle size={8} startColor={randomColor} endColor={randomColor} minW={8}/>}
+                {false ? (
+                  <Image src={profilePhoto} width={8} height={8} />
+                ) : (
+                  <SkeletonCircle
+                    size="8"
+                    startColor={randomColor}
+                    endColor={randomColor}
+                    minW={8}
+                  />
+                )}
                 <Box ml={2}>
                   <Flex>
                     <Text textStyle="bodySmallSemibold">{Name}</Text>{' '}
