@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import styled from '@emotion/styled'
 import Image from 'next/image'
 import {
   Flex,
@@ -13,21 +14,18 @@ import {
   Tbody,
   Td,
   IconButton,
+  useToken,
 } from '@chakra-ui/react'
 import Comments from '../components/Comments'
 import Tinder from '../components/Tinder'
 import ClapButton from 'react-clap-button'
 
-const ChakraImage = chakra(Image, {
-  shouldForwardProp: (prop) => {
-    return ['src', 'width', 'height'].includes(prop)
-  },
-  baseStyle: {
-    borderRadius: 'md',
-  },
-})
-
 export default function Home() {
+  const borderRadius = useToken('radii', 'md')
+  const StyledImage = styled(Image)`
+    border-radius: ${borderRadius};
+  `
+
   return (
     <Box>
       <Head>
@@ -38,9 +36,8 @@ export default function Home() {
       <Flex bgColor="brand.500" p={2} align="center">
         <Tinder />
         <Flex maxW={8} align="center">
-          <ChakraImage
+          <Image
             src="https://storage.googleapis.com/tc-assets/tc-app-icon.svg"
-            layout="responsive"
             width="596px"
             height="596px"
           />
@@ -53,7 +50,19 @@ export default function Home() {
       <Box maxW="container.sm" p={[4, null, 8]} m="auto">
         <Flex direction="column" align="center">
           <Box>
-            <Image width={'350px'} height={'350px'} src="/profile.jpg" />
+            <Box
+              boxShadow="base"
+              width="350px"
+              height="350px"
+              borderRadius={borderRadius}
+            >
+              <StyledImage
+                width={'350px'}
+                height={'350px'}
+                src="/profile.jpg"
+                className="profile-img"
+              />
+            </Box>
             <Flex align="center">
               <Text textStyle="headline2" mr={2}>
                 Ryan Irilli 💖,

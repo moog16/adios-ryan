@@ -147,7 +147,7 @@ const theme = extendTheme({
   },
   fontSizes,
 })
-
+console.log(theme)
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
