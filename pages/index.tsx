@@ -156,13 +156,35 @@ export default function Home() {
               },
               { repo: 'go-api', commits: '2', added: '93', removed: '37' },
               { repo: 'terraform', commits: '4', added: '950', removed: '446' },
+              {
+                repo: 'bench-press',
+                commits: '600lbs',
+                added: '',
+                removed: '',
+              },
+              {
+                repo: 'three-point-%',
+                commits: '98.6%',
+                added: '',
+                removed: '',
+              },
+              {
+                repo: 'avg-steps-taken',
+                commits: '15,000',
+                added: '',
+                removed: '',
+              },
             ].map(({ repo, commits, added, removed }, index) => {
               return (
                 <Tr key={index}>
                   <Td>{repo}</Td>
                   <Td>{commits}</Td>
-                  <Td color="green.500">{added} ++</Td>
-                  <Td color="red.500">{removed} --</Td>
+                  {added ? <Td color="green.500">{added} ++</Td> : <Td>--</Td>}
+                  {removed ? (
+                    <Td color="red.500">{removed} --</Td>
+                  ) : (
+                    <Td>--</Td>
+                  )}
                 </Tr>
               )
             })}
